@@ -23,12 +23,8 @@ export class HttpClientService {
     else
       url = `${this.url(requestParameter)}${id ? `/${id}` : ""}${requestParameter.queryString ? `?${requestParameter.queryString}` : ""}`;
 
-    return this.httpClient.get<T>(url, { headers: requestParameter.headers, responseType: requestParameter.responseType as 'json' });
+    return this.httpClient.get<T>(url, { headers: requestParameter.headers});
   }
-
-
-
-
 
   post<T>(requestParameter: Partial<RequestParameters>, body: Partial<T>): Observable<T> {
     let url: string = "";
@@ -37,31 +33,27 @@ export class HttpClientService {
     else
       url = `${this.url(requestParameter)}${requestParameter.queryString ? `?${requestParameter.queryString}` : ""}`
 
-    return this.httpClient.post<T>(url, body, { headers: requestParameter.headers, responseType: requestParameter.responseType as 'json' });
+    return this.httpClient.post<T>(url, body, { headers: requestParameter.headers});
   }
-
-
 
   put<T>(requestParameter: Partial<RequestParameters>, body: Partial<T>): Observable<T> {
     let url: string = "";
     if (requestParameter.fullEndPoint)
       url = requestParameter.fullEndPoint;
     else
-      url = `${this.url(requestParameter)}${requestParameter.queryString ? `?${requestParameter.queryString}` : ""}`;
+      url = `${this.url(requestParameter)}`;
 
-    return this.httpClient.put<T>(url, body, { headers: requestParameter.headers, responseType: requestParameter.responseType as 'json' });
+    return this.httpClient.put<T>(url, body, { headers: requestParameter.headers });
   }
-
-
 
   delete<T>(requestParameter: Partial<RequestParameters>, id: string): Observable<T> {
     let url: string = "";
     if (requestParameter.fullEndPoint)
       url = requestParameter.fullEndPoint;
     else
-      url = `${this.url(requestParameter)}/${id}${requestParameter.queryString ? `?${requestParameter.queryString}` : ""}`;
+      url = `${this.url(requestParameter)}/${id}`;
 
-    return this.httpClient.delete<T>(url, { headers: requestParameter.headers, responseType: requestParameter.responseType as 'json' });
+    return this.httpClient.delete<T>(url, { headers: requestParameter.headers});
   }
 }
 

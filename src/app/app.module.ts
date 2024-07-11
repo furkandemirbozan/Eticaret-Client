@@ -10,7 +10,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BaseComponent } from './base/base.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,6 +31,9 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
+    //provideClientHydration(),//GPT
+    //provideAnimationsAsync(),//GPT
+    //provideHttpClient(withFetch()), // Fetch API'yi etkinleştirmek için ekliyoruz
     { provide: "baseUrl", useValue: "https://localhost:7199/api", multi: true }
   ],
   bootstrap: [AppComponent]

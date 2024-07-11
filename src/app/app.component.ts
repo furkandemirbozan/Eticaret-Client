@@ -25,23 +25,10 @@ declare var $: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'ETicaretClient';
 
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: any,
-    private toastr: ToastrService,
-    private customToastr: CustomToastrService
-  ) {}
+  constructor(){
 
-  ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      
-
-      $.get("https://localhost:7199/api/products", (data) => {
-        console.log(data);
-      });
-    }
   }
-  
 }
